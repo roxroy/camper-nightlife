@@ -6,7 +6,8 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App';
 import Home from './components/home/Home';
-import About from './components/about/About';
+import Signup from './components/auth/Signup';
+import Login from './components/auth/Login';
 
 import reducers from './reducers';
 
@@ -20,7 +21,8 @@ ReactDOM.render(
     <Router onUpdate={() => window.scrollTo(0, 0)} history={browserHistory}>
       <Route path="/" component={App}>
         <IndexRoute component={Home} />;
-        <Route path="/about" component={About} />
+        <Route path="/login" component={Login} />
+        <Route path="/signup" component={Signup} />
       </Route>
     </Router>
   </Provider>

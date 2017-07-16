@@ -1,13 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300);
 
+html, body {
+  height: 100%;
+}
+
 body {
 	display: flex;
-	min-height: 100vh;
 	flex-direction: column;
 }
 
+nav {
+	padding-bottom: 20px;
+}
+
 main {
-	padding-top: 20px;
   flex: 1 0 auto;
 }
 

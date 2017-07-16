@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react';
 import Header from './common/Header';
+import Footer from './common/Footer';
 
 function App({ children }) {
   return (
@@ -8,6 +9,7 @@ function App({ children }) {
       <main className="container">
       	{children}
       </main>
+      <Footer />
     </div>
   );
 }
