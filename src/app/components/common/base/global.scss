@@ -1,13 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito:400,300);
 
 body {
-  margin: 0;
-  padding: 0;
-  font-family: 'Nunito', sans-serif;
-  font-size: 16px;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
-.container {
-  width: 100%;
-  text-align: center;
+main {
+	padding-top: 20px;
+  flex: 1 0 auto;
+}
+
+footer {
+	padding-top: 50px;
 }
