@@ -10,7 +10,7 @@
     "start": "NODE_ENV=production PORT=8080 pm2 start ./server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
-    "lint": "eslint src test webpack"
+    "lint": "eslint src test server webpack"
   },
   "keywords": [
     "ExpressJS",
