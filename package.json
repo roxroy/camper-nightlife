@@ -1,10 +1,12 @@
 {
-  "name": "express-react-redux-starter",
-  "version": "1.1.0",
-  "description": "Starter for Express, React, Redux, SCSS applications",
+  "name": "camper-nightlife",
+  "version": "1.0.1",
+  "description": "View all bars in our area and indicate you are going there tonight.",
   "scripts": {
     "dev": "webpack-dev-server --watch --colors",
     "build": "rimraf dist && NODE_ENV=production webpack --colors",
+    "heroku-build": "rimraf dist && NODE_ENV=production webpack ",
+    "heroku-postbuild": "npm install && npm run heroku-build",
     "start": "NODE_ENV=production PORT=8080 pm2 start ./server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
@@ -26,9 +28,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DimitriMikadze/express-react-redux-starter"
+    "url": "git+https://github.com/roxroy/camper-nightlife"
   },
-  "author": "Dimitri Mikadze",
+  "author": "Roxroy Clayton",
   "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.8.0",
