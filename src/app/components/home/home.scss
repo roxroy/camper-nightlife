@@ -1,6 +1,12 @@
 .home {
-
   h1 {
     color: $light-blue;
   }
+}
+
+.hero {
+	min-height: 150px;
+	background-colour: gray;
+	vertical-align: middle;
+	background-image: url("/images/tray-glasses.jpg");
 }

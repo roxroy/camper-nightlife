@@ -6,7 +6,7 @@ function App({ children }) {
   return (
     <div>
       <Header />
-      <main className="container">
+      <main>
       	{children}
       </main>
       <Footer />
