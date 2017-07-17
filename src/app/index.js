@@ -10,7 +10,6 @@ import Signup from './components/auth/Signup';
 import Login from './components/auth/Login';
 
 import reducers from './reducers';
-
 import './components/bundle.scss';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);

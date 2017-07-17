@@ -6,7 +6,7 @@ function Home() {
   return (
     <div className="home">
       <Hero />
-      <Benefits className="container" />
+      <Benefits />
     </div>
   )
 }

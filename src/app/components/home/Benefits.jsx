@@ -2,7 +2,7 @@ import React from 'react';
 
 function Benefits() {
   return (
-    	<div className="row">
+    	<div className="container row">
         <div className="col s12 m4">
           <div className="icon-block">
             <h2 className="center light-blue-text"><i className="material-icons medium">chat_bubble_outline</i></h2>

@@ -2,7 +2,7 @@ import React from 'react';
 
 function Signup() {
   return (
-   	<div className="signup">
+   	<div className="container signup">
       <h4>Signup</h4>
       <div className="row">
     		<form className="col s12">

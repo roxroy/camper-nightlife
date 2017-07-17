@@ -1,104 +1,50 @@
-var Path = require('path');
+const path = require('path');
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var ExtractSASS = new ExtractTextPlugin('/styles/app.css');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-var Webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-var isProduction = process.env.NODE_ENV === 'production';
-var cssOutputPath = isProduction ? '/styles/app.[hash].css' : '/styles/app.css';
-var jsOutputPath = isProduction ? '/scripts/app.[hash].js' : '/scripts/app.js';
-var ExtractSASS = new ExtractTextPlugin(cssOutputPath);
-var port = isProduction ? process.env.PORT || 8080 : process.env.PORT || 3000;
-
-// ------------------------------------------
-// Base
-// ------------------------------------------
-var webpackConfig = {
+module.exports = {
+  entry: './src/app/index',
+  output: {
+    path: path.resolve('dist'),
+    filename: 'app.js'
+  },
   resolve: {
-    extensions: ['', '.js', '.jsx'],
-  },
-  plugins: [
-    new Webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(isProduction ? 'production' : 'development'),
-      },
-    }),
-    new HtmlWebpackPlugin({
-      template: Path.join(__dirname, './src/index.html'),
-    }),
-  ],
+     extensions: ['','.jsx', '.js', '.css'],
+	},
   module: {
-    loaders: [{
-      test: /.jsx?$/,
-      include: Path.join(__dirname, './src/app'),
-      loader: 'babel',
-    }],
+    loaders: [
+      {
+        test: /\.js$/, 
+        loader: 'babel-loader', 
+        exclude: /node_modules/ 
+      },
+      { 
+        test: /\.jsx$/, 
+        loader: 'babel-loader', 
+        exclude: /node_modules/ 
+      },
+      { // regular css files
+        test: /\.css$/,
+        loader: ExtractTextPlugin.extract({
+          loader: 'css-loader?importLoaders=1',
+        }),
+      },
+      { // sass / scss loader for webpack
+        test: /\.(sass|scss)$/,
+        loader: ExtractTextPlugin.extract(['css-loader', 'sass-loader'])
+      },
+      {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file"},
+      {test: /\.(woff|woff2)$/, loader: "url?prefix=font/&limit=5000"},
+      {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=application/octet-stream"},
+      {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url?limit=10000&mimetype=image/svg+xml"}
+    ]
   },
-};
-
-// ------------------------------------------
-// Entry points
-// ------------------------------------------
-webpackConfig.entry = !isProduction
-  ? ['webpack-dev-server/client?http://localhost:' + port,
-     'webpack/hot/dev-server',
-     Path.join(__dirname, './src/app/index')]
-  : [Path.join(__dirname, './src/app/index')];
-
-// ------------------------------------------
-// Bundle output
-// ------------------------------------------
-webpackConfig.output = {
-  path: Path.join(__dirname, './dist'),
-  filename: jsOutputPath,
-};
-
-// ------------------------------------------
-// Devtool
-// ------------------------------------------
-webpackConfig.devtool = isProduction ? 'source-map' : 'cheap-eval-source-map';
-
-// ------------------------------------------
-// Module
-// ------------------------------------------
-isProduction
-  ? webpackConfig.module.loaders.push({
-      test: /\.scss$/,
-      loader: ExtractSASS.extract(['css', 'sass']),
+  // Use the plugin to specify the resulting filename (and add needed behavior to the compiler)
+  plugins: [
+     new ExtractTextPlugin("app.css"),
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, './src/index.html'),
     })
-  : webpackConfig.module.loaders.push({
-      test: /\.scss$/,
-      loaders: ['style', 'css', 'sass'],
-    });
-
-// ------------------------------------------
-// Plugins
-// ------------------------------------------
-isProduction
-  ? webpackConfig.plugins.push(
-      new Webpack.optimize.OccurenceOrderPlugin(),
-      new Webpack.optimize.UglifyJsPlugin({
-        compressor: {
-          warnings: false,
-        },
-      }),
-      ExtractSASS
-    )
-  : webpackConfig.plugins.push(
-      new Webpack.HotModuleReplacementPlugin()
-    );
-
-// ------------------------------------------
-// Development server
-// ------------------------------------------
-if (!isProduction) {
-  webpackConfig.devServer = {
-    contentBase: Path.join(__dirname, './'),
-    hot: true,
-    port: port,
-    inline: true,
-    progress: true,
-    historyApiFallback: true,
-  };
+  ]
 }
-
-module.exports = webpackConfig;

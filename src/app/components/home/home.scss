@@ -4,9 +4,15 @@
   }
 }
 
-.hero {
-	min-height: 150px;
+.hero1 {
 	background-colour: gray;
 	vertical-align: middle;
 	background-image: url("/images/tray-glasses.jpg");
+}
+
+.hero {
+	min-height: 400px;
+	background: linear-gradient(rgba(0,0,0,.8),rgba(0,0,0,.8)),url(/images/tray-glasses.jpg);
+	background-position: center top;
+	background-size: cover;
 }

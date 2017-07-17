@@ -3,11 +3,9 @@
   "version": "1.0.1",
   "description": "View all bars in our area and indicate you are going there tonight.",
   "scripts": {
-    "dev": "webpack-dev-server --watch --colors",
-    "build": "rimraf dist && NODE_ENV=production webpack --colors",
-    "heroku-build": "rimraf dist && NODE_ENV=production webpack ",
+    "build": "webpack --watch --colors",
+    "heroku-build": "webpack",
     "heroku-postbuild": "npm install && npm run heroku-build",
-    "start": "NODE_ENV=production PORT=8080 pm2 start ./server.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch",
     "lint": "eslint src test server webpack"
@@ -19,10 +17,7 @@
     "React hot loader",
     "React Router",
     "SCSS",
-    "Webpack Devevelopment configuration",
-    "Webpack Production configuration",
     "Airbnb Eslint",
-    "pm2",
     "mocha",
     "chai"
   ],
@@ -54,12 +49,10 @@
     "node-sass": "^3.7.0",
     "react-addons-test-utils": "^15.0.2",
     "react-hot-loader": "^1.3.0",
-    "rimraf": "^2.6.1",
     "sass-loader": "^3.2.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.0",
-    "webpack-dev-server": "^1.14.1"
+    "webpack": "^1.13.0"
   },
   "dependencies": {
     "express": "^4.13.4",
