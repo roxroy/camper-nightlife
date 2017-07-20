@@ -6,7 +6,7 @@ import { Router, Route, IndexRoute, browserHistory } from 'react-router';
 
 import App from './components/App';
 import Home from './components/home/Home';
-import Signup from './components/auth/Signup';
+import SignupForm from './components/auth/SignupForm';
 import Login from './components/auth/Login';
 
 import reducers from './reducers';
@@ -21,7 +21,7 @@ ReactDOM.render(
       <Route path="/" component={App}>
         <IndexRoute component={Home} />;
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={Signup} />
+        <Route path="/signup" component={SignupForm} />
       </Route>
     </Router>
   </Provider>
