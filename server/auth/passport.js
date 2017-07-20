@@ -13,7 +13,7 @@ module.exports = (passport) => {
     });
   });
 
-  passport.use(new LocalStrategy( 
+  passport.use('local-signup', new LocalStrategy( 
   {
      passReqToCallback : true // allows us to pass back the entire request to the callback
   },
@@ -34,4 +34,29 @@ module.exports = (passport) => {
       });
     });
   }));
+  
+
+  passport.use('local-login', new LocalStrategy( 
+  {
+     passReqToCallback : true // allows us to pass back the entire request to the callback
+  },
+  (username, password, done) => {
+    process.nextTick(() => {
+      User.findOne({ username: username }, (err, user) => {
+        if (err) {
+          return done(err);
+        }
+        if (!user) { 
+          return done(null, false,  { success: false, message: 'Incorrect userName or Password.'}); 
+        }
+        if (!user.validPassword(password)){
+          return done(null, false,  { success: false, message: 'Incorrect userName or Password.'}); 
+        }
+  
+        return done(null, newUser);
+        
+      });
+    });
+  }));
+
 };
