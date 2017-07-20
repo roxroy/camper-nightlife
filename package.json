@@ -3,6 +3,7 @@
   "version": "1.0.1",
   "description": "View all bars in our area and indicate you are going there tonight.",
   "scripts": {
+    "start": "node server.js",
     "build": "webpack --watch --colors",
     "heroku-build": "webpack",
     "heroku-postbuild": "npm install && npm run heroku-build",
@@ -46,6 +47,7 @@
     "jquery": "^2.2.3",
     "jsdom": "^9.0.0",
     "mocha": "^2.4.5",
+    "nodemon": "^1.11.0",
     "node-sass": "^3.7.0",
     "react-addons-test-utils": "^15.0.2",
     "react-hot-loader": "^1.3.0",
