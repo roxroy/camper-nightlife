@@ -1,3 +1,7 @@
+data
+testdata
+.env
+
 /node_modules
 /dist
 /.idea
