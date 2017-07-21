@@ -17,9 +17,9 @@ module.exports = (passport) => {
   {
      passReqToCallback : true // allows us to pass back the entire request to the callback
   },
-  (req, username, password, done) => {
+  (username, password, done) => {
     process.nextTick(() => {
-      User.findOne({ username: username }, (err, user, info) => {
+      User.findOne({ username: username }, (err, user) => {
       console.log('user', user);
 
         if (err) {
