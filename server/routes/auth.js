@@ -11,9 +11,12 @@ module.exports = (app, passport) => {
       //res.redirect('/');
     });
 
-  app.route('/login')
+  app.route('/signup')
     .post(passport.authenticate('local-signup'),
-    (req, res) => {
-      //res.redirect('/');
+    (err, user, info) => {
+      console.log('/signup', err);
+      if (err) return next(err);
+      if (!user) return next(null, false);
+      next(null, user);
     });
 };
