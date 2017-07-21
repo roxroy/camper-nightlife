@@ -1,6 +1,7 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 import PasswordInput from '../common/PasswordInput';
+import authService from './authService';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -8,7 +9,7 @@ class SignupForm extends React.Component {
 
     this.state = {
       user: {
-        userName: '',
+        username: '',
         password: ''
       },
       errors: {},
@@ -25,11 +26,11 @@ class SignupForm extends React.Component {
   }
 
 
-  validate({userName, password}) {
+  validate({username, password}) {
     const errors = {};
     const minPasswordLength = 3;
 
-    if (userName.length<minPasswordLength) errors.userName = `User Name must be at least ${minPasswordLength} characters.`;
+    if (username.length<minPasswordLength) errors.username = `User Name must be at least ${minPasswordLength} characters.`;
     if (password.length<minPasswordLength) errors.password = `Password must be at least ${minPasswordLength} characters.`;
 
     this.setState({errors});
@@ -43,6 +44,8 @@ class SignupForm extends React.Component {
     const formIsValid = this.validate(user);
     if (formIsValid) {
       //this.props.onSubmit(user);
+      const a = authService.submitSignup(user);
+      console.log('onSubmit', a);
       this.setState({submitted: true});
       Materialize.toast('You are signup!', 1500);
     }
@@ -50,7 +53,7 @@ class SignupForm extends React.Component {
 
   render() {
     const {errors, submitted} = this.state;
-    const {userName, password} = this.state.user;
+    const {username, password} = this.state.user;
 
     return (
      	<div className="container signup">
@@ -62,11 +65,11 @@ class SignupForm extends React.Component {
                 <TextInput 
                   icon="account_circle" 
                   htmlId="signup-form-username"
-                  name="userName"
+                  name="username"
                   onChange={this.onChange}
                   label="UserName"
-                  value={userName}
-                  error={errors.userName}
+                  value={username}
+                  error={errors.username}
                   required />
               </div>
             </div>

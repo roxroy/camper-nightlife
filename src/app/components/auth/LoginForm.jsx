@@ -8,7 +8,7 @@ class LoginForm extends React.Component {
 
     this.state = {
       user: {
-        userName: '',
+        username: '',
         password: ''
       },
       errors: {},
@@ -25,10 +25,10 @@ class LoginForm extends React.Component {
   }
 
 
-  validate({userName, password}) {
+  validate({username, password}) {
     const errors = {};
 
-    if (userName.length<1) errors.userName = 'User Name is required';
+    if (username.length<1) errors.username = 'User Name is required';
     if (password.length<1) errors.password = 'Password is required';
 
     this.setState({errors});
@@ -49,7 +49,7 @@ class LoginForm extends React.Component {
 
   render() {
     const {errors, submitted} = this.state;
-    const {userName, password} = this.state.user;
+    const {username, password} = this.state.user;
 
     return (
       <div className="container signup">
@@ -61,11 +61,11 @@ class LoginForm extends React.Component {
                 <TextInput 
                   icon="account_circle" 
                   htmlId="signup-form-username"
-                  name="userName"
+                  name="username"
                   onChange={this.onChange}
                   label="UserName"
-                  value={userName}
-                  error={errors.userName}
+                  value={username}
+                  error={errors.username}
                   required />
               </div>
             </div>
