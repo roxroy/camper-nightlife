@@ -13,14 +13,14 @@ class Searchbar extends React.Component {
   }
 
   onChange = (event) => {
-    const location = this.state.location;
-    user[event.target.name] = event.target.value;
+    const location = event.target.value;
     this.setState({location});
   }
 
   onSubmit = (event) => {
     if (event) event.preventDefault();
     const location = this.state.location;
+    this.props.onSubmit(location);
   }
 
   render() {
