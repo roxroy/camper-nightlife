@@ -18,7 +18,7 @@
           return  resolve(json);
         })
         .catch(e => {
-          console.log('search results:', e);
+          console.log('error search results:', e);
           return reject(new Error(e.statusText))
         })
       });

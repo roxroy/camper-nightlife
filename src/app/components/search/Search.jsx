@@ -15,15 +15,13 @@ class Search extends React.Component {
   }
 
   onSubmit = (location) => {
-    const cb = data => {
-      this.setState({
-        bars : data
-      });
-    }
     searchServices.barSearch(location)
     .then(bars => {
        console.log('got locations', bars );
-      })
+       this.setState({
+         bars : bars.businesses
+       });
+      });
   }    
 
  	render() {
