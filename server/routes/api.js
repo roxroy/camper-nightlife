@@ -4,6 +4,10 @@ module.exports = (app) => {
 
 app.route('/yelp')
     .get((req, res) => {
-      yelpServices.search();
+      //yelpServices.search();
+      console.log('/yelp');
+      const businesses = yelpServices.mockSearch();
+       res.status(200).send(businesses);
+
     });
 };
