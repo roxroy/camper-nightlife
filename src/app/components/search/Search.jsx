@@ -1,6 +1,6 @@
 import React from 'react';
-import Searchbar from '../components/search/Searchbar';
-import SearchList from '../components/search/SearchList';
+import Searchbar from './Searchbar';
+import SearchList from './SearchList';
 import searchServices from './searchService';
 
 class Search extends React.Component {
@@ -15,15 +15,19 @@ class Search extends React.Component {
   }
 
   onSubmit = (location) => {
-    const bars = searchServices.barSearch(location);
-    console.log('your location', location, bars );
-    this.setState({
-      bars
-    });
-  }
+    const cb = data => {
+      this.setState({
+        bars : data
+      });
+    }
+    searchServices.barSearch(location)
+    .then(bars => {
+       console.log('got locations', bars );
+      })
+  }    
 
  	render() {
-    const barlist = {this.state.bars};
+    const barlist = { bars:  this.state.bars };
 	  return (
 	    <div>
 	      <Searchbar onSubmit={this.onSubmit} />

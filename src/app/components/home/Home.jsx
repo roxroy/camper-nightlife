@@ -1,7 +1,7 @@
 import React from 'react';
 import Benefits from './Benefits';
 import Hero from './Hero';
-import Search from '../../containers/Search';
+import Search from '../search/Search';
 
 function Home() {
   return (
