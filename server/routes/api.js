@@ -2,12 +2,12 @@ const yelpServices = require('../services/yelpService');
 
 module.exports = (app) => {
 
-app.route('/yelp')
+	app.route('/yelp/:location')
     .get((req, res) => {
-      //yelpServices.search();
-      console.log('/yelp');
-      const businesses = yelpServices.mockSearch();
-       res.status(200).send(businesses);
-
+    	const location = req.params.location;
+      console.log('/yelp', location); 
+      //yelpServices.search(location);
+      const businesses = yelpServices.mockSearch(location);
+      res.status(200).send(businesses);
     });
 };

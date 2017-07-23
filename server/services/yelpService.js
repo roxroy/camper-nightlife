@@ -8,11 +8,12 @@ const yelp = new Yelp({
 });
 
 const mockSearch = (location) => {
+  console.log('mockSearch', location, businesses.length);
   return businesses;
 }
 
 const search = (location) => {
-  yelp.search({term: 'food', location: 'toronto', limit: 10})
+  yelp.search({term: 'bar', location: location, limit: 10})
     .then(function (data) {
         console.log(data);
     })
