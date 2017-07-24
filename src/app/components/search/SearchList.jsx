@@ -2,10 +2,10 @@ import React, {PropTypes} from 'react';
 import SearchListItem from './SearchListItem';
 
 const  SearchList = (props) => {
-	const bars = props.barlist.bars.map( (bar, i) => {
+	const barlist = props.bars.map( (bar, i) => {
      return  <SearchListItem bar={bar} key={i} />
     });
-	const searchText = props.barlist.bars.length ? 
+	const searchText = props.bars.length ? 
 	`Search for : ${props.location}` :
    '';
 	          
@@ -14,11 +14,16 @@ const  SearchList = (props) => {
 	    	<div className="row">
 	        <div className="col s12">
 	          <h5 className="center">{searchText}</h5>
-	          {bars}
+	          {barlist}
 	        </div>
 	      </div>
 	    </div>
   )
 }
+
+SearchList.propTypes = {
+  location: React.PropTypes.string.isRequired,
+  bars: React.PropTypes.array.isRequired
+};
 
 export default SearchList;
