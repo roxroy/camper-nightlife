@@ -9,6 +9,7 @@ class Search extends React.Component {
 
     this.state = {
       bars: [],
+      location: []
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -29,7 +30,7 @@ class Search extends React.Component {
 	  return (
 	    <div>
 	      <Searchbar onSubmit={this.onSubmit} />
-	      <SearchList barlist={barlist} />
+	      <SearchList barlist={barlist} location={location} />
 	    </div>
 	  )
 	}

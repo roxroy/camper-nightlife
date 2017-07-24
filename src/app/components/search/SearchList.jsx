@@ -5,7 +5,6 @@ const  SearchList = ({barlist}) => {
 	const bars = barlist.bars.map( (bar, i) => {
      return  <SearchListItem bar={bar} key={i} />
     });
-	console.log('SearchList barlist', barlist, barlist.bars, bars);
 	          
   return (
 	    <div>

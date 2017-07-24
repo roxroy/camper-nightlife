@@ -126,7 +126,7 @@ const businesses = [
 			"latitude": 43.6498557260377,
 			"longitude": -79.3661657480043
 		},
-		"locatio n": {
+		"location": {
 			"address1": "222 The Esplanade",
 			"address2": "",
 			"address3": "",

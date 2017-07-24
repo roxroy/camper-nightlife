@@ -14,7 +14,6 @@
           return response.json();
         })
         .then(json => {
-          console.log('search results:', json);
           return  resolve(json);
         })
         .catch(e => {
