@@ -1,16 +1,19 @@
 import React, {PropTypes} from 'react';
 import SearchListItem from './SearchListItem';
 
-const  SearchList = ({barlist}) => {
-	const bars = barlist.bars.map( (bar, i) => {
+const  SearchList = (props) => {
+	const bars = props.barlist.bars.map( (bar, i) => {
      return  <SearchListItem bar={bar} key={i} />
     });
+	const searchText = props.barlist.bars.length ? 
+	`Search for : ${props.location}` :
+   '';
 	          
   return (
 	    <div>
 	    	<div className="row">
 	        <div className="col s12">
-	          <h5 className="center">SearchList</h5>
+	          <h5 className="center">{searchText}</h5>
 	          {bars}
 	        </div>
 	      </div>

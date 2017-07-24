@@ -1,12 +1,13 @@
 import React from 'react';
 
+
 const  SearchListItem = ({bar}) => {
   const address= bar.location.address1 + ' ' + bar.location.address2;
   const totalGoing = 1;
 
   return (
     <div className="col s12 m4">
-      <div className="card">
+      <div className="card bar-card">
         <div className="card-image">
           <img src={bar.image_url}/>
         </div>

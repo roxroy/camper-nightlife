@@ -2,6 +2,7 @@ import React from 'react';
 import Searchbar from './Searchbar';
 import SearchList from './SearchList';
 import searchServices from './searchService';
+import './search.scss';
 
 class Search extends React.Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class Search extends React.Component {
 
     this.state = {
       bars: [],
-      location: []
+      location: '',
     };
 
     this.onSubmit = this.onSubmit.bind(this);
@@ -20,17 +21,23 @@ class Search extends React.Component {
     .then(bars => {
        console.log('got locations', bars );
        this.setState({
-         bars : bars.businesses
+         bars : bars.businesses,
+         location: location,
        });
       });
   }    
+
+  onGoingClick = (event, ) => {
+    if (event) event.preventDefault();
+    console.log('onGoingClick');  
+  }
 
  	render() {
     const barlist = { bars:  this.state.bars };
 	  return (
 	    <div>
 	      <Searchbar onSubmit={this.onSubmit} />
-	      <SearchList barlist={barlist} location={location} />
+	      <SearchList barlist={barlist} location={this.state.location} />
 	    </div>
 	  )
 	}
