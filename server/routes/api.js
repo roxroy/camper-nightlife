@@ -1,5 +1,17 @@
 const yelpServices = require('../services/yelpService'); 
 
+const updateRsvp = locations => {
+	let places = [];
+	locations.businesses.forEach( place => {
+		const newPlace = place;
+		newPlace.amGoing = Math.random() > 0.7 ? true : false;
+		newPlace.totalGoing = Math.floor(Math.random()*20);
+		places.push(newPlace);
+	});
+
+	return places;
+}
+
 module.exports = (app) => {
 
 	app.route('/yelp/:location')
@@ -7,7 +19,8 @@ module.exports = (app) => {
     	const location = req.params.location;
       console.log('/yelp', location); 
       //yelpServices.search(location);
-      const businesses = yelpServices.mockSearch(location);
+      const businesses = updateRsvp(yelpServices.mockSearch(location));
+      // 
       res.status(200).send(businesses);
     });
 };

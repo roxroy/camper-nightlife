@@ -4,7 +4,7 @@ import React from 'react';
 const  SearchListItem = (props) => {
   const bar = props.bar;
   const address= bar.location.address1 + ' ' + bar.location.address2;
-  const totalGoing = 1;
+  const goingText = bar.amGoing ? 'Am Going' : 'Going?';
 
   return (
     <div className="col s12 m4">
@@ -19,8 +19,8 @@ const  SearchListItem = (props) => {
           <span>Rating: {bar.rating}/5.0</span>
         </div>   
         <div className="card-action">
-          <button className="btn btn-block btn-lg waves-effect" type="submit" onClick={props.onGoingClick}> Going? </button>
-          <span className="badge right-align">{totalGoing} Yes</span>
+          <span className="waves-effect waves-light btn" onClick={props.onGoingClick}>{goingText}</span>
+          <span className="badge right-align">{bar.totalGoing} Yes</span>
         </div>
       </div>
     </div>

@@ -22,7 +22,7 @@ class Search extends React.Component {
     .then(bars => {
        console.log('got locations', bars );
        this.setState({
-         bars : bars.businesses,
+         bars : bars,
          location: location,
        });
       });
@@ -32,6 +32,18 @@ class Search extends React.Component {
     if (event) event.preventDefault();
     const barid = $(event.target).parent().closest('.card').data('barid');
     console.log('onGoingClick', barid);
+    const _bars = this.state.bars;
+    const _bar = _bars.find(bar => bar.id === barid);
+    if (_bar.amGoing){
+      _bar.amGoing = false;
+      _bar.totalGoing--;
+    } else {
+      _bar.amGoing = true;
+      _bar.totalGoing++;
+    }
+    this.setState({
+      bars : _bars,
+    });
   }
 
  	render() {
