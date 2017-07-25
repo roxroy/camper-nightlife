@@ -14,6 +14,7 @@ class Search extends React.Component {
     };
 
     this.onSubmit = this.onSubmit.bind(this);
+    this.onGoingClick = this.onGoingClick.bind(this);    
   }
 
   onSubmit = (location) => {
@@ -37,7 +38,10 @@ class Search extends React.Component {
 	  return (
 	    <div>
 	      <Searchbar onSubmit={this.onSubmit} />
-	      <SearchList bars={barlist.bars} location={this.state.location} />
+	      <SearchList 
+          bars={barlist.bars} 
+          location={this.state.location} 
+          onGoingClick={this.onGoingClick} />
 	    </div>
 	  )
 	}

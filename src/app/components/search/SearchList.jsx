@@ -3,7 +3,7 @@ import SearchListItem from './SearchListItem';
 
 const  SearchList = (props) => {
 	const barlist = props.bars.map( (bar, i) => {
-     return  <SearchListItem bar={bar} key={i} />
+     return  <SearchListItem bar={bar}  onGoingClick={props.onGoingClick}  key={i} />
     });
 	const searchText = props.bars.length ? 
 	`Search for : ${props.location}` :

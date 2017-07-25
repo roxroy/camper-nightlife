@@ -1,13 +1,14 @@
 import React from 'react';
 
 
-const  SearchListItem = ({bar}) => {
+const  SearchListItem = (props) => {
+  const bar = props.bar;
   const address= bar.location.address1 + ' ' + bar.location.address2;
   const totalGoing = 1;
 
   return (
     <div className="col s12 m4">
-      <div className="card bar-card">
+      <div className="card bar-card" data-barId={bar.id}>
         <div className="card-image">
           <img src={bar.image_url}/>
         </div>
@@ -18,7 +19,7 @@ const  SearchListItem = ({bar}) => {
           <span>Rating: {bar.rating}/5.0</span>
         </div>   
         <div className="card-action">
-          <a href="#">Going?</a>
+          <button className="btn btn-block btn-lg waves-effect" type="submit" onClick={props.onGoingClick}> Going? </button>
           <span className="badge right-align">{totalGoing} Yes</span>
         </div>
       </div>
