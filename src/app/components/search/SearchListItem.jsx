@@ -8,7 +8,7 @@ const  SearchListItem = (props) => {
 
   return (
     <div className="col s12 m4">
-      <div className="card bar-card" data-barId={bar.id}>
+      <div className="card bar-card" data-barid={bar.id}>
         <div className="card-image">
           <img src={bar.image_url}/>
         </div>

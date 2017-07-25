@@ -28,9 +28,10 @@ class Search extends React.Component {
       });
   }    
 
-  onGoingClick = (event, ) => {
+  onGoingClick = (event) => {
     if (event) event.preventDefault();
-    console.log('onGoingClick');  
+    const barid = $(event.target).parent().closest('.card').data('barid');
+    console.log('onGoingClick', barid);
   }
 
  	render() {
