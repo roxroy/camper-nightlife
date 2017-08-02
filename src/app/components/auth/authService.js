@@ -1,27 +1,37 @@
-  const submitSignup = user => {
+  const submitAuth = (user, path) => {
     const body = JSON.stringify(user);
-    console.log('submitSignup', user);
-    fetch('/signup',
-      {
-        method: 'POST', credentials: 'include',
-        body: body,
-        headers: { 'Content-Type': 'application/json' }
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error(`status ${response.status}`);
-        }
-        return response.json();
-      })
-      .then(json => {
-        console.log(json);
-        this.setState({
-        });
-      })
-      .catch(e => {
-      })
+    console.log(`submit-${path}`, user);
+       return new Promise(function(resolve, reject) {  
+        fetch(path,
+          {
+            method: 'POST', credentials: 'include',
+            body: body,
+            headers: { 'Content-Type': 'application/json' }
+          })
+          .then(response => {
+            if (!response.ok) {
+              reject(response.json());
+            }
+            return response.json();
+          })
+          .then(json => {
+            return  resolve(json);
+          })
+          .catch(e => {
+            return reject(new Error(e.statusText))
+          })
+    });
+  }
+
+  const submitLogin = user => {
+    return submitAuth(user, '/login');
+  }
+
+  const submitSignup = user => {
+    return submitAuth(user, '/signup');
   }
 
   module.exports = {
-    submitSignup
+    submitSignup,
+    submitLogin
   }

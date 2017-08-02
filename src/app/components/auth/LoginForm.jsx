@@ -1,6 +1,8 @@
 import React from 'react';
 import TextInput from '../common/TextInput';
 import PasswordInput from '../common/PasswordInput';
+import authService from './authService';
+import { browserHistory } from 'react-router';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -24,7 +26,6 @@ class LoginForm extends React.Component {
     this.setState({user});
   }
 
-
   validate({username, password}) {
     const errors = {};
 
@@ -42,8 +43,22 @@ class LoginForm extends React.Component {
     const formIsValid = this.validate(user);
     if (formIsValid) {
       //this.props.onSubmit(user);
-      this.setState({submitted: true});
-      Materialize.toast('You are valid!', 1500);
+      authService.submitLogin(user)
+      .then(loginData => {
+        console.log('onSubmit', loginData);
+        if (loginData.success) {
+          this.setState({submitted: true});
+          Materialize.toast('You are valid!', 1500);
+          browserHistory.push('/');
+        } else {
+          const errors = {};
+          errors.username = loginData.info.message;
+          this.setState({errors});
+        }
+      })
+      .catch(e => {
+        console.log('onSubmit', e);
+      });    
     }
   }
 
