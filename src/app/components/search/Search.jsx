@@ -45,7 +45,7 @@ class Search extends React.Component {
     if (event) event.preventDefault();
     const barid = $(event.target).parent().closest('.card').data('barid');
     console.log('onGoingClick', barid);
-    const _bars = updateGoing(barid);
+    const _bars = this.updateGoing(barid);
     this.setState({
       bars : _bars,
     });

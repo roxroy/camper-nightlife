@@ -50,7 +50,7 @@ authRoutes(app, passport);
 apiRoutes(app);
 
 app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, '../dist/index.html'));
+  res.sendFile(path.join(__dirname, '../dist/index.html'),  { user: req.user });
 });
 
 const port = process.env.PORT || 3000;
