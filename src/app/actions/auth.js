@@ -1,6 +1,12 @@
+// We import constants to name our actions' type
+import {
+  LOGIN,
+  LOGOUT,
+} from './constants'
+
 export const login = (username, password) => {
     return {
-        type: 'LOGIN',
+        type: LOGIN,
         username: username,
         password: password
     };
@@ -8,7 +14,7 @@ export const login = (username, password) => {
  
 export const logout = () => {
     return {
-        type: 'LOGOUT'
+        type: LOGOUT
     };
 };
  

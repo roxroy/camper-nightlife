@@ -1,3 +1,10 @@
+// We import constants to name our actions' type
+import {
+  LOGIN,
+  LOGOUT,
+  SIGNUP,
+} from '../actions/constants'
+
 const defaultState = {
 	isLoggedIn: false,
 	username: '',
@@ -6,19 +13,19 @@ const defaultState = {
  
 export default function reducer(state = defaultState, action) {
 	switch (action.type) {
-		case 'SIGNUP': 
+		case SIGNUP: 
 			return Object.assign({}, state, { 
 				isLoggedIn: true,
 				username: action.username,
 				password: action.password
 			});
-		case 'LOGIN': 
+		case LOGIN: 
 			return Object.assign({}, state, { 
 				isLoggedIn: true,
 				username: action.username,
 				password: action.password
 			});
-		case 'LOGOUT':
+		case LOGOUT:
 			return Object.assign({}, state, { 
 				isLoggedIn: false,
 				username: '',
