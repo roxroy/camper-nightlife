@@ -3,6 +3,7 @@ import TextInput from '../common/TextInput';
 import PasswordInput from '../common/PasswordInput';
 import authService from './authService';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
 
 
 class SignupForm extends React.Component {
@@ -52,6 +53,7 @@ class SignupForm extends React.Component {
         if (loginData.success) {
           this.setState({submitted: true});
           Materialize.toast('You are signup!', 1500);
+          this.props.onSignUp(user.username, user.password);
           browserHistory.push('/');
         } else {
           const errors = {};
@@ -111,4 +113,16 @@ class SignupForm extends React.Component {
   }
 }
 
-export default SignupForm;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLoggedIn: state.auth.isLoggedIn
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onSignUp: (username, password) => { dispatch(signup(username, password)); }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);

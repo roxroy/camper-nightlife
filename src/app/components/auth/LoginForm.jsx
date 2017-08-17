@@ -3,6 +3,8 @@ import TextInput from '../common/TextInput';
 import PasswordInput from '../common/PasswordInput';
 import authService from './authService';
 import { browserHistory } from 'react-router';
+import { connect } from 'react-redux';
+import {login} from '../../actions/auth';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -48,7 +50,8 @@ class LoginForm extends React.Component {
         console.log('onSubmit', loginData);
         if (loginData.success) {
           this.setState({submitted: true});
-          Materialize.toast('You are valid!', 1500);
+          Materialize.toast('You are login!', 1500);
+          this.props.onLogin(user.username, user.password);
           browserHistory.push('/');
         } else {
           const errors = {};
@@ -107,4 +110,17 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLoggedIn: state.auth.isLoggedIn
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        onLogin: (username, password) => { dispatch(login(username, password)); }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
