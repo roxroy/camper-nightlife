@@ -27,7 +27,6 @@ class Search extends React.Component {
   }
 
   onSubmit = (location) => {
-    console.log('Rox 1', location );
     this.props.searchForBars(location);
   }    
 
@@ -56,16 +55,16 @@ class Search extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-        location: state.search.location,
-        bars: state.search.bars,
-    };
+  return {
+      location: state.search.location,
+      bars: state.search.bars,
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        searchForBars: (term) => { dispatch(searchForBar(term)); }
-    }
+  return {
+      searchForBars: (term) => { dispatch(searchForBar(term)); }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

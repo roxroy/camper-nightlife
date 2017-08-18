@@ -18,8 +18,14 @@ export const logout = () => {
     };
 };
  
-export const signup = (username, password) => {
+export const signup_success = (username, password) => {
     return (dispatch) => {
-        console.log('signup Rox 3', username );
+        console.log('signup_success', username );
+    };
+};
+
+export const login_success = (username, password) => {
+    return (dispatch) => {
+        console.log('login_success', username );
     };
 };
