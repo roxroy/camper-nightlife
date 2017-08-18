@@ -1,24 +1,20 @@
 import React from 'react';
 import Searchbar from './Searchbar';
 import SearchList from './SearchList';
-import searchServices from './searchService';
 import './search.scss';
+import { connect } from 'react-redux';
+import {receiveSearchData, searchForBar} from '../../actions/search';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      bars: [],
-      location: '',
-    };
 
     this.onSubmit = this.onSubmit.bind(this);
     this.onGoingClick = this.onGoingClick.bind(this);    
   }
 
   updateGoing = (barid) => {
-    const _bars = this.state.bars;
+    const _bars = this.props.bars;
     const _bar = _bars.find(bar => bar.id === barid);
     if (_bar.amGoing){
       _bar.amGoing = false;
@@ -31,14 +27,8 @@ class Search extends React.Component {
   }
 
   onSubmit = (location) => {
-    searchServices.barSearch(location)
-    .then(bars => {
-       console.log('got locations', bars );
-       this.setState({
-         bars : bars,
-         location: location,
-       });
-      });
+    console.log('Rox 1', location );
+    this.props.searchForBars(location);
   }    
 
   onGoingClick = (event) => {
@@ -52,17 +42,30 @@ class Search extends React.Component {
   }
 
  	render() {
-    const barlist = { bars:  this.state.bars };
+    const barlist = { bars:  this.props.bars };
 	  return (
 	    <div>
 	      <Searchbar onSubmit={this.onSubmit} />
 	      <SearchList 
           bars={barlist.bars} 
-          location={this.state.location} 
+          location={this.props.location} 
           onGoingClick={this.onGoingClick} />
 	    </div>
 	  )
 	}
 }
 
-export default Search;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        location: state.search.location,
+        bars: state.search.bars,
+    };
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        searchForBars: (term) => { dispatch(searchForBar(term)); }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

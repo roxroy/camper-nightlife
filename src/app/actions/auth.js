@@ -20,5 +20,6 @@ export const logout = () => {
  
 export const signup = (username, password) => {
     return (dispatch) => {
+        console.log('signup Rox 3', username );
     };
 };

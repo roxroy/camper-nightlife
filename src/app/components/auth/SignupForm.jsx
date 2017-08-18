@@ -64,7 +64,6 @@ class SignupForm extends React.Component {
       .catch(e => {
         console.log('onSubmit', e);
       });
-
     }
   }
 
@@ -114,15 +113,15 @@ class SignupForm extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    return {
-        isLoggedIn: state.auth.isLoggedIn
-    };
+  return {
+    isLoggedIn: state.auth.isLoggedIn
+  };
 }
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        onSignUp: (username, password) => { dispatch(signup(username, password)); }
-    }
+  return {
+    onSignUp: (username, password) => { dispatch(signup(username, password)); }
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupForm);
