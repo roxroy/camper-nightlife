@@ -4,3 +4,5 @@ export const SIGNUP = 'SIGNUP';
 
 export const SEARCH_LOCATION = 'SEARCH_LOCATION';
 export const LOAD_SEARCH_SUCCESS = 'LOAD_SEARCH_SUCCESS';
+
+export const UPDATE_RSVP = 'UPDATE_RSVP';

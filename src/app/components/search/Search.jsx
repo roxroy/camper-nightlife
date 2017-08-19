@@ -3,27 +3,14 @@ import Searchbar from './Searchbar';
 import SearchList from './SearchList';
 import './search.scss';
 import { connect } from 'react-redux';
-import {searchLocation, searchForBar} from '../../actions/search';
+import { searchLocation, searchForBar, rsvpBar } from '../../actions/search';
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
 
     this.onSubmit = this.onSubmit.bind(this);
-    this.onGoingClick = this.onGoingClick.bind(this);    
-  }
-
-  updateGoing = (barid) => {
-    const _bars = this.props.bars;
-    const _bar = _bars.find(bar => bar.id === barid);
-    if (_bar.amGoing){
-      _bar.amGoing = false;
-      _bar.totalGoing--;
-    } else {
-      _bar.amGoing = true;
-      _bar.totalGoing++;
-    }
-    return _bars;
+    this.onGoingClick = this.onGoingClick.bind(this);
   }
 
   onSubmit = (location) => {
@@ -34,11 +21,7 @@ class Search extends React.Component {
   onGoingClick = (event) => {
     if (event) event.preventDefault();
     const barid = $(event.target).parent().closest('.card').data('barid');
-    console.log('onGoingClick', barid);
-    const _bars = this.updateGoing(barid);
-    this.setState({
-      bars : _bars,
-    });
+    this.props.rsvpBar(barid);
   }
 
  	render() {
@@ -65,8 +48,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
       searchForBars: (term) => { dispatch(searchForBar(term)); },
-      searchLocation: (location) => { dispatch(searchLocation(location)); }
-
+      searchLocation: (location) => { dispatch(searchLocation(location)); },
+      rsvpBar: (barId) => { dispatch(rsvpBar(barId)); }
   }
 }
 

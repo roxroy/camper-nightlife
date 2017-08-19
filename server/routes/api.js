@@ -14,6 +14,16 @@ const updateRsvp = locations => {
 
 module.exports = (app) => {
 
+	app.route('/yelp/rsvp')
+    .post((req, res) => {
+      console.log('/rsvp', req.user, req.body.barId);
+	 		const goingInfo =  {
+				amGoing : Math.random() > 0.7 ? true : false,
+			  totalGoing :  Math.floor(Math.random()*20) 
+			};
+      res.status(200).send(goingInfo);
+    });
+
 	app.route('/yelp/:location')
     .get((req, res) => {
     	const location = req.params.location;

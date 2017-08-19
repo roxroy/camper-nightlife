@@ -2,6 +2,7 @@
 import {
  	LOAD_SEARCH_SUCCESS,
   SEARCH_LOCATION,
+  UPDATE_RSVP,
 } from '../actions/constants'
 
 const defaultState = {
@@ -19,6 +20,15 @@ export default function reducer(state = defaultState, action) {
 			return Object.assign({}, state, { 
 				bars: action.bars,
 			});
+		case UPDATE_RSVP: 
+			const bars = state.bars.map(bar =>
+        (bar.id === action.barId) 
+          ? {...bar, totalGoing: action.rsvpInfo.totalGoing, amGoing: action.rsvpInfo.amGoing}
+          : bar);
+			return Object.assign({}, state, { 
+				bars
+			});
+			
 		default:
 			return state;
 	}

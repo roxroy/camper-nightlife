@@ -2,6 +2,7 @@
 import {
   LOAD_SEARCH_SUCCESS,
   SEARCH_LOCATION,
+  UPDATE_RSVP,
 } from './constants';
 
 import searchServices from '../components/search/searchService';
@@ -20,6 +21,14 @@ export const receiveSearchData = (bars) => {
 	}
 }
 
+export const updateRsvp = (barId, rsvpInfo ) => {
+	return {
+	  type: UPDATE_RSVP,
+	  barId,
+	  rsvpInfo,
+	}
+}
+
 export const searchForBar = (term) => {
 	return (dispatch) => {
 		searchServices.barSearch(term)
@@ -29,4 +38,13 @@ export const searchForBar = (term) => {
       });
   
 	};
+};
+
+export const rsvpBar = (barId) => {
+	return (dispatch) => {
+		searchServices.barRsvp(barId)
+    .then(rsvpInfo => {
+	     dispatch(updateRsvp(barId, rsvpInfo));
+		});
+  }
 };
