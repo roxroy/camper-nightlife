@@ -17,7 +17,7 @@ module.exports = (app) => {
 	app.route('/yelp/:location')
     .get((req, res) => {
     	const location = req.params.location;
-      console.log('/yelp', location); 
+      console.log('/yelp', location, req.user); 
       //yelpServices.search(location);
       const businesses = updateRsvp(yelpServices.mockSearch(location));
       // 

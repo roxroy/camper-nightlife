@@ -24,9 +24,10 @@ module.exports = (app, passport) => {
           return next(err);
       }
       if (user) {
-          return res.status(200).json({success: true});
+          const newUser = { username: user.username, id: user._id };
+          return res.status(200).json(Object.assign({success: true, user: newUser}));
       } else {
-          return res.status(200).json( Object.assign({success: false, info}));
+          return res.status(200).json(Object.assign({success: false, info}));
       }
     })(req, res, next);
   });

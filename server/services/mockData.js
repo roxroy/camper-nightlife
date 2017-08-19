@@ -147,7 +147,7 @@ const businesses = [
 	{
 		id: "ono-poké-bar-toronto",
 		name: "'ONO Poké Bar",
-		image_url: "https://s3-media4.fl.yelpcdn/bphoto/Mru4QZqTrGirA_xjoa2Z3w/o.jpg",
+		image_url: "https://s3-media2.fl.yelpcdn.com/bphoto/QSVEvOuy_lsyURX3E2p9Ug/258s.jpg",
 		url: "https://www.yelp.com/biz/ono-pok%C3%A9-bar-toronto?adjust_creat ive=3WNbvQLXnmQb0VmznT_gaQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=3WNbvQLXnmQb0VmznT_gaQ",
 		review_count: 22,
 		rating: 5,

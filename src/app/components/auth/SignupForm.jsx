@@ -4,7 +4,7 @@ import PasswordInput from '../common/PasswordInput';
 import authService from './authService';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-
+import { signup } from '../../actions/auth';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -49,11 +49,11 @@ class SignupForm extends React.Component {
       //this.props.onSubmit(user);
       authService.submitSignup(user)
       .then(loginData => {
-        console.log('onSubmit', loginData);
+        console.log('onSubmit', loginData );
         if (loginData.success) {
           this.setState({submitted: true});
           Materialize.toast('You are signup!', 1500);
-          this.props.onSignUp(user.username, user.password);
+          this.props.onSignUp(loginData.userid, loginData.username);
           browserHistory.push('/');
         } else {
           const errors = {};

@@ -2,6 +2,7 @@
 import {
   LOGIN,
   LOGOUT,
+  SIGNUP
 } from './constants'
 
 export const login = (username, password) => {
@@ -11,7 +12,15 @@ export const login = (username, password) => {
         password: password
     };
 };
- 
+
+export const signup = (id, username) => {
+    return {
+        type: SIGNUP,
+        userid: id,
+        username: username
+    };
+};
+
 export const logout = () => {
     return {
         type: LOGOUT
