@@ -19,23 +19,17 @@ mongoose.connect(dbUri, {
   useMongoClient: true,
 });
 
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
-
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../dist')));
 
-const cookieExpirationDate = new Date();
-const cookieExpirationDays = 5;
-cookieExpirationDate.setDate(cookieExpirationDate.getDate() + cookieExpirationDays);
+app.use(cookieParser());
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 
 app.use(session({
   secret: 'secretSauce2017',
-  resave: true,
-  saveUninitialized: true,
-	cookie: {
-	    expires: cookieExpirationDate // use expires instead of maxAge
-	}
+  resave: false,
+  saveUninitialized: true
 }));
 
 app.use(passport.initialize());
