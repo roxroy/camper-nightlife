@@ -1,6 +1,6 @@
 // We import constants to name our actions' type
 import {
- 	RECEIVE_SEARCH_DATA,
+ 	LOAD_SEARCH_SUCCESS,
   SEARCH_LOCATION,
 } from '../actions/constants'
 
@@ -15,7 +15,7 @@ export default function reducer(state = defaultState, action) {
 			return Object.assign({}, state, { 
 				location: action.location,
 			});
-		case RECEIVE_SEARCH_DATA: 
+		case LOAD_SEARCH_SUCCESS: 
 			return Object.assign({}, state, { 
 				bars: action.bars,
 			});

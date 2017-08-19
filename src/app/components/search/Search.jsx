@@ -3,7 +3,7 @@ import Searchbar from './Searchbar';
 import SearchList from './SearchList';
 import './search.scss';
 import { connect } from 'react-redux';
-import {receiveSearchData, searchForBar} from '../../actions/search';
+import {searchLocation, searchForBar} from '../../actions/search';
 
 class Search extends React.Component {
   constructor(props) {
@@ -28,6 +28,7 @@ class Search extends React.Component {
 
   onSubmit = (location) => {
     this.props.searchForBars(location);
+    this.props.searchLocation(location);
   }    
 
   onGoingClick = (event) => {
@@ -63,7 +64,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      searchForBars: (term) => { dispatch(searchForBar(term)); }
+      searchForBars: (term) => { dispatch(searchForBar(term)); },
+      searchLocation: (location) => { dispatch(searchLocation(location)); }
+
   }
 }
 

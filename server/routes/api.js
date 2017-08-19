@@ -2,7 +2,7 @@ const yelpServices = require('../services/yelpService');
 
 const updateRsvp = locations => {
 	let places = [];
-	locations.businesses.forEach( place => {
+	locations.forEach( place => {
 		const newPlace = place;
 		newPlace.amGoing = Math.random() > 0.7 ? true : false;
 		newPlace.totalGoing = Math.floor(Math.random()*20);

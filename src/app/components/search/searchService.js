@@ -4,7 +4,7 @@
       const url = `/yelp/${location}`;
       fetch(url,
         {
-          method: 'GET', 
+          method: 'GET',
           credentials: 'include'
         })
         .then(response => {

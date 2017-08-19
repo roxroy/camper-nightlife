@@ -1,6 +1,6 @@
 require('dotenv').load();
 let Yelp = require('yelpv3');
-let businesses = require('./mockData');
+let businesses = require('./mockData').businesses;
 
 const yelp = new Yelp({
   app_id: process.env.YELP_KEY,
