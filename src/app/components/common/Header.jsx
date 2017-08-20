@@ -47,7 +47,6 @@ const Header = ({isLoggedIn, logout}) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('Header mapStateToProps', state);
     return {
         isLoggedIn: state.auth.isLoggedIn
     };

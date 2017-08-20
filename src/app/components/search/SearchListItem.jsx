@@ -3,7 +3,7 @@ import React from 'react';
 const  SearchListItem = (props) => {
   const bar = props.bar;
   const address= bar.location.address1 + ' ' + bar.location.address2;
-  const goingText = bar.amGoing ? 'Am Going' : 'Not Going';
+  const goingText = (bar.amGoing && props.isLoggedIn) ? 'Am Going' : 'Not Going';
 
   return (
     <div className="col s12 m4">

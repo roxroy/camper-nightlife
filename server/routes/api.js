@@ -7,7 +7,6 @@ module.exports = (app) => {
     .post((req, res) => {
     	const barId = req.body.barId,
             userId = req.user && req.user.id || null;
-      console.log('/rsvp', userId, barId);
       
       if (userId) {
   		  barServices.updateGoing(barId, userId)
@@ -23,7 +22,6 @@ module.exports = (app) => {
     .get((req, res) => {
     	const location = req.params.location;
             userId = req.user && req.user.id || "111111111111111111111111";
-      console.log('/yelp1', location, req.user); 
       /*
       yelpServices.search(location)
       .then ( data => {

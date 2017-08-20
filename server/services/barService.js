@@ -2,7 +2,6 @@ const mongoose = require('mongoose');
 let BarRsvp = require('../models/barRsvp');
 
 const updateRsvp = (locations, stats) => {
-  console.log('updateRsvp', stats);
   let places = [];
 
   locations.forEach( place => {
@@ -69,7 +68,6 @@ const updateGoing = (barId, userId) => {
             throw err;
           }
         });
-        console.log('updateGoing 1', _barRsvp);
         return { totalGoing: _barRsvp.totalRsvp, amGoing} ;
       } else {
         const newBarRsvp = new BarRsvp();
