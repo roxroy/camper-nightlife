@@ -1,7 +1,11 @@
 {
   "name": "camper-nightlife",
-  "version": "1.0.1",
   "description": "View all bars in our area and indicate you are going there tonight.",
+  "version": "1.0.1",
+  "engines": {
+    "node": "7.10.1",
+    "npm": "4.2.0"
+  },
   "scripts": {
     "start": "node server.js",
     "build": "webpack --watch --colors",
