@@ -1,7 +1,11 @@
 {
   "name": "camper-nightlife",
-  "version": "1.0.1",
   "description": "View all bars in our area and indicate you are going there tonight.",
+  "version": "1.0.1",
+  "engines": {
+    "node": "7.10.1",
+    "npm": "4.2.0"
+  },
   "scripts": {
     "start": "node server.js",
     "build": "webpack --watch --colors",
@@ -36,8 +40,6 @@
     "eslint-plugin-import": "^1.8.0",
     "eslint-plugin-jsx-a11y": "^1.2.0",
     "eslint-plugin-react": "^5.1.1",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "html-webpack-plugin": "^2.16.1",
     "jquery": "^2.2.3",
     "jsdom": "^9.0.0",
     "mocha": "^2.4.5",
@@ -59,6 +61,8 @@
     "dotenv": "^4.0.0",
     "express": "^4.13.4",
     "express-session": "^1.15.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "html-webpack-plugin": "^2.16.1",
     "mongoose": "^4.11.3",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
