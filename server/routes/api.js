@@ -6,19 +6,23 @@ module.exports = (app) => {
 	app.route('/yelp/rsvp')
     .post((req, res) => {
     	const barId = req.body.barId,
-    	      userId = req.user.id;
+            userId = req.user && req.user.id || null;
       console.log('/rsvp', userId, barId);
-     
-	 		 barServices.updateGoing(barId, userId)
-	 		.then(goingInfo => {
-    		res.status(200).send(goingInfo);
-			});      
+      
+      if (userId) {
+  		  barServices.updateGoing(barId, userId)
+  	 		.then(goingInfo => {
+      		res.status(200).send(goingInfo);
+  			});
+      } else {
+          res.status(200).send({ error: true });
+      }
     });
 
 	app.route('/yelp/:location')
     .get((req, res) => {
     	const location = req.params.location;
-            userId = req.user && req.user.id || "1111111111111111111111111";
+            userId = req.user && req.user.id || "111111111111111111111111";
       console.log('/yelp1', location, req.user); 
       /*
       yelpServices.search(location)

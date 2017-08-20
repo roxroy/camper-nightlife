@@ -48,7 +48,7 @@ const updateStats = (bars, userId) => {
   
 }
 
-const updateGoing = (bars, userId) => {
+const updateGoing = (barId, userId) => {
   return BarRsvp.findOne({ 'barId': barId }).exec()
     .then(_barRsvp => {
       if (_barRsvp) {

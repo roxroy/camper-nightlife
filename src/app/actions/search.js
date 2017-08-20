@@ -6,6 +6,7 @@ import {
 } from './constants';
 
 import searchServices from '../components/search/searchService';
+import { browserHistory } from 'react-router';
 
 export const searchLocation = (location) => {
 	return {
@@ -33,10 +34,8 @@ export const searchForBar = (term) => {
 	return (dispatch) => {
 		searchServices.barSearch(term)
     .then(bars => {
-       console.log('got locations', bars );
         dispatch(receiveSearchData(bars));
-      });
-  
+      });  
 	};
 };
 
@@ -44,8 +43,11 @@ export const rsvpBar = (barId) => {
 	return (dispatch) => {
 		searchServices.barRsvp(barId)
     .then(rsvpInfo => {
-    	console.log('searchServices.barRsvp', rsvpInfo );
-	     dispatch(updateRsvp(barId, rsvpInfo));
+    	if (!rsvpInfo.hasOwnProperty('error')){
+	     	dispatch(updateRsvp(barId, rsvpInfo));
+    	} else {
+	     	dispatch(browserHistory.push('/login'));    		
+    	}
 		});
   }
 };
