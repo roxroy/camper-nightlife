@@ -1,7 +1,7 @@
 const businesses = [
 	{
 		id: "me-n-u-food-truck-toronto-2",
-		name: "Me.n.u Food Truck",
+		name: "M.e.n.u Food Truck and Game Arcade",
 		image_url: "https://s3-media1.fl.yelpcdn.com/bphoto/qLFeYFIAQO9aFkklYdZmUg/o.jpg",
 		url: "https://www.yelp.com/biz/me-n-u-food-truck-toronto-2?adjust_creative=3WNbvQLX nmQb0VmznT_gaQ&utm_campaign=yelp_api_v3&utm_medium=api_v3_business_search&utm_source=3WNbvQLXnmQb0VmznT_gaQ",
 		review_count: 19,
@@ -101,7 +101,7 @@ const businesses = [
 			address1: "563 Yonge Street",
 			address2: "",
 			address3: null,
-			city: "Tor onto",
+			city: "Toronto",
 			zip_code: "M4Y 1Z2",
 			country: "CA",
 			state: "ON",

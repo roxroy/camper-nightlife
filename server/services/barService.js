@@ -16,6 +16,7 @@ const updateRsvp = (locations, stats) => {
       location : {
         address1 : place.location.address1,
         address2 : place.location.address2,
+        city : place.location.city,
       },
     };
     newPlace.amGoing = stat && stat.amGoing || false;
@@ -26,25 +27,36 @@ const updateRsvp = (locations, stats) => {
   return places;
 }
 
-const updateStats = (bars, userId) => {
+const getStats = (userId) => {
   const userObjectId = mongoose.Types.ObjectId(userId);
   return BarRsvp.aggregate([
     {
-        "$project": {
-          "barId" : "$barId",
-          "totalGoing": "$totalRsvp",
-          "amGoing" : {
-            "$setIsSubset": [ [userObjectId], "$rsvpIds" ]
-          }
+      "$project": {
+        "barId" : "$barId",
+        "totalGoing": "$totalRsvp",
+        "amGoing" : {
+          "$setIsSubset": [ [userObjectId], "$rsvpIds" ]
         }
       }
+    }
     ]).exec()
       .then(stats => {
-        return updateRsvp(bars, stats);
+        return stats;
+    }).catch( err  => {
+      console.log('getStats error', err);
+    });  
+}
+
+const updateStats = (bars, userId) => {
+  return new Promise(function(resolve, reject) {
+    getStats(userId)
+    .then(stats => {
+      resolve (updateRsvp(bars, stats));
     }).catch( err  => {
       console.log('updateStats error', err);
-    });
-  
+      reject(err);
+    }); 
+  });
 }
 
 const updateGoing = (barId, userId) => {
@@ -87,4 +99,5 @@ const updateGoing = (barId, userId) => {
 module.exports = {
   updateGoing,
   updateStats,
+  getStats,
 }

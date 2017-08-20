@@ -31,10 +31,8 @@ export const logout = () => {
 
 export const logout_success = () => {
     return (dispatch) => {
-        console.log('logout_success 1' );
       authService.logout()
       .then(() => {
-        console.log('logout_success 2' );
         dispatch(browserHistory.push('/'));
       }).catch(e => {
       });
@@ -43,12 +41,10 @@ export const logout_success = () => {
 
 export const signup_success = (username, password) => {
     return (dispatch) => {
-        console.log('signup_success', username );
     };
 };
 
 export const login_success = (username, password) => {
     return (dispatch) => {
-        console.log('login_success', username );
     };
 };

@@ -14,7 +14,7 @@ const mockSearch = (location) => {
 }
 
 const search = (location) => {
-  return yelp.search({term: 'bar', location: location, limit: 20})
+  return yelp.search({term: 'bar', location: location, limit: 21})
     .then(function (data) {
       return data;
     })

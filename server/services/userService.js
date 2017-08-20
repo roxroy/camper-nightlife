@@ -8,9 +8,7 @@ const mapItem = (item) => {
 }
 
 const addNew = (profile, cb) => {
-
   const newUser = new User();
-  console.log(addNew, profile);
 
   newUser.username = profile.username;
   newUser.password = newUser.generateHash(profile.password);

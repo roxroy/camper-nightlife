@@ -2,8 +2,12 @@ import React from 'react';
 
 const  SearchListItem = (props) => {
   const bar = props.bar;
-  const address= bar.location.address1 + ' ' + bar.location.address2;
+  const address= bar.location.address1 + ', ' + (bar.location.address2 || '') 
+        + ', ' + (bar.location.city || '');
   const goingText = (bar.amGoing && props.isLoggedIn) ? 'Am Going' : 'Not Going';
+  const barName = bar.name.length >= 20 
+    ? bar.name.substring(0, 20)+ '...'
+    : bar.name;
 
   return (
     <div className="col s12 m4">
@@ -13,7 +17,7 @@ const  SearchListItem = (props) => {
         </div>
         <div className="card-content">
           <span className="card-title">
-          <a href={bar.url}>{bar.name}</a></span>
+          <a href={bar.url} target="_blank">{barName}</a></span>
           <p>{address}</p>
           <span>Rating: {bar.rating}/5.0</span>
         </div>   

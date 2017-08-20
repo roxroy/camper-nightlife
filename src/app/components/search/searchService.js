@@ -24,7 +24,6 @@
   }
 
   const barRsvp = (barId) => {
-
     const body = JSON.stringify({barId});
     const url = '/yelp/rsvp';
     return fetch(url,
@@ -43,9 +42,28 @@
       .catch(error  => {
         return error
       })
+  }
+
+  const getAllRsvps = () => {
+    const url = '/yelp/allrsvp';
+    return fetch(url,
+      {
+        method: 'GET',
+        credentials: 'include'
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`status ${response.status}`);
+        }
+        return response.json();
+      })
+      .catch(error  => {
+        return error
+      })
 }
 
   module.exports = {
     barSearch,
     barRsvp,
+    getAllRsvps,
   }

@@ -4,7 +4,8 @@ import PasswordInput from '../common/PasswordInput';
 import authService from './authService';
 import { browserHistory } from 'react-router';
 import { connect } from 'react-redux';
-import {login} from '../../actions/auth';
+import { login, login_success } from '../../actions/auth';
+import { getAllRsvps } from '../../actions/search';
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -112,13 +113,17 @@ class LoginForm extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-      isLoggedIn: state.auth.isLoggedIn
+    isLoggedIn: state.auth.isLoggedIn
   };
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-      onLogin: (username, password) => { dispatch(login(username, password)); }
+    onLogin: (username, password) => {
+      dispatch(login(username, password));
+      dispatch(login_success());
+      dispatch(getAllRsvps());
+    }
   }
 }
 

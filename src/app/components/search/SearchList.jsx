@@ -3,8 +3,6 @@ import SearchListItem from './SearchListItem';
 import { connect } from 'react-redux';
 
 const  SearchList = (props) => {
-  console.log('SearchList', props);
-
   const barlist = props.bars.map( (bar, i) => {
    return  <SearchListItem 
       bar={bar}
