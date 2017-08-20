@@ -8,8 +8,9 @@ const yelp = new Yelp({
 });
 
 const mockSearch = (location) => {
-  console.log('mockSearch', location, businesses.length);
-  return businesses;
+  return new Promise(function(resolve, reject) {
+    return  resolve(businesses);
+  });
 }
 
 const search = (location) => {
