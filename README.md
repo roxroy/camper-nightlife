@@ -1,4 +1,4 @@
-# Camper Night life Coordination App
+# Camper Night Life Coordination App
 Web application to view all bars in our area and indicate you are going there tonight.
 
 ## User Story
