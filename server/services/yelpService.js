@@ -13,12 +13,13 @@ const mockSearch = (location) => {
 }
 
 const search = (location) => {
-  yelp.search({term: 'bar', location: location, limit: 10})
+  return yelp.search({term: 'bar', location: location, limit: 15})
     .then(function (data) {
-        console.log(data);
+      console.log(data);
+      return data;
     })
     .catch(function (err) {
-        console.error(err);
+      console.error(err);
     });
 }
 

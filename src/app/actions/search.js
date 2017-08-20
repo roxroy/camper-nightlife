@@ -44,6 +44,7 @@ export const rsvpBar = (barId) => {
 	return (dispatch) => {
 		searchServices.barRsvp(barId)
     .then(rsvpInfo => {
+    	console.log('searchServices.barRsvp', rsvpInfo );
 	     dispatch(updateRsvp(barId, rsvpInfo));
 		});
   }
