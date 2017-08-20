@@ -1,8 +1,8 @@
 module.exports = (app, passport) => {
   app.route('/logout')
-    .get((req, res) => {
+    .post((req, res) => {
       req.logout();
-      res.redirect('/');
+      return res.status(200).json({success: true});
     }); 
 
   app.post('/login', function(req, res, next) {

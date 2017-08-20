@@ -1,6 +1,5 @@
   const submitAuth = (user, path) => {
     const body = JSON.stringify(user);
-    console.log(`submit-${path}`, user);
        return new Promise(function(resolve, reject) {  
         fetch(path,
           {
@@ -23,6 +22,10 @@
     });
   }
 
+  const logout = user => {
+    return submitAuth({}, '/logout');
+  }
+  
   const submitLogin = user => {
     return submitAuth(user, '/login');
   }
@@ -33,5 +36,6 @@
 
   module.exports = {
     submitSignup,
-    submitLogin
+    submitLogin,
+    logout,
   }
