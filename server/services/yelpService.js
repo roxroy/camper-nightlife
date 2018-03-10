@@ -1,10 +1,9 @@
 require('dotenv').load();
-let Yelp = require('yelpv3');
+let Yelp = require('yelp-v3');
 let businesses = require('./mockData').businesses;
 
 const yelp = new Yelp({
-  app_id: process.env.YELP_KEY,
-  app_secret: process.env.YELP_SECRET
+  access_token: process.env.YELP_API_KEY,
 });
 
 const mockSearch = (location) => {
@@ -14,7 +13,7 @@ const mockSearch = (location) => {
 }
 
 const search = (location) => {
-  return yelp.search({term: 'bar', location: location, limit: 21})
+  return yelp.search({term: 'bar', location: location, limit: 30})
     .then(function (data) {
       return data;
     })

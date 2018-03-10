@@ -41,7 +41,7 @@ module.exports = (app) => {
       
       if (true) {
         yelpServices.search(location).then ( data => {
-          return JSON.parse(data);
+          return data;
         }).then( data => {
           return barServices.updateStats(data.businesses, userId);
         }).then( data => {
